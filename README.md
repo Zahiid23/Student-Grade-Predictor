@@ -7,7 +7,7 @@ This machine learning model uses linear regression to draw a best fit line. It p
 
 ## Files required
 
-studenr-mat.csv
+student-mat.csv
 [can be downlaoded]https://archive.ics.uci.edu/dataset/320/student+performance 
 
 
@@ -37,4 +37,5 @@ $ data = pd.read_csv("< PATH >/student-mat.csv", sep=";")
 
 ## References
 All data used for the project was acquired from the UC Irving Machine Learning Repository
+https://archive.ics.uci.edu/
 
