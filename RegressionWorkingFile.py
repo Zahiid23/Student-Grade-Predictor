@@ -6,7 +6,7 @@ import matplotlib.pyplot as pyplot
 import pickle
 from matplotlib import style
 
-
+# cleaning raw data
 data = pd.read_csv("student-mat.csv", sep=";")
 
 data = data[
@@ -35,37 +35,38 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(
 )
 # loop for training and finding the best model
 best = 0
-for _ in range(100):  # Running loop 30 times
+# splitting data in to test and train size and then Running loop to train model
+for _ in range(100):  
     x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(
         X, y, test_size=0.1
-    )  # The training model and test size whcih will determine our training data size(10% of data are test samples)
+    )  # The test size will determine our training data size(10% of data are test samples, rest is used to train)
 
     linear = (
         linear_model.LinearRegression()
-    )  # The algorithm we are using is linear regression
+    )  # The linear regression algorithm 
 
     linear.fit(x_train, y_train)
-    acc = linear.score(x_test, y_test)  # accuracy score
+    acc = linear.score(x_test, y_test)  # printing accuracy score
     print("Accuracy:  \n", acc)
 
-    # Only saving model if its accuracy is greater than the best accuracy
+    # Only saving model if its accuracy is better than the best accuracy hence we get our most accurate data model which we can use later.
     if acc > best:
         best = acc
         with open("studentmodel.pickle", "wb") as f:
-            pickle.dump(linear, f)
+            pickle.dump(linear, f) # saving data model into a pickel file
 
-# loading pickel file in order to use same data model(comment out the code above)
+# loading pickel file in order to use same data model(comment out the code above in order not to train the data again)
 pickle_in = open("studentmodel.pickle", "rb")
 linear = pickle.load(pickle_in)
 
-print("Intercept: \n", linear.intercept_)
+print("Intercept: \n", linear.intercept_) # Displying intercept value
 
 predictions = linear.predict(x_test)
 
 for x in range(len(predictions)):
-    print(predictions[x], x_test[x], y_test[x])
+    print(predictions[x], x_test[x], y_test[x]) # Displying prediction values in order to comare it with test values
 
-
+# plotting of scatter graph and line of beat fit
 p = "G2"
 style.use("ggplot")
 pyplot.scatter(data[p], data["G3"])
