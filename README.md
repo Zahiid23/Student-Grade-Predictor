@@ -8,8 +8,9 @@ This machine learning model uses linear regression to draw a best fit line. It p
 ## Getting Started
 
 <p>Clone this repository using the following command: </p>
-* $ git clone https://github.com/Zahiid23/Student-Grade-Predictor.git
-
+'''
+$ git clone https://github.com/Zahiid23/Student-Grade-Predictor.git
+'''
 ## Dependencies
 
 * Python
