@@ -1,4 +1,4 @@
-# Student-Grade-Predictor
+# Student Grade Predictor
 Prediction of student grades using Machine Learning
 
 ## Description
